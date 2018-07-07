@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuefou_flutter/src/global_state.dart';
 import 'package:yuefou_flutter/src/home/navigation_drawer.dart';
 
 // 这个变量需要为持久化
@@ -16,6 +17,8 @@ class Page extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
+  static const String ACTIVE_ROUTE_PATH = 'active-route-path';
+
   final String title;
   final Widget body;
 
@@ -24,15 +27,17 @@ class Page extends StatefulWidget {
 }
 
 class _PageState extends State<Page> {
+  GlobalState _globalState = GlobalState.instance;
+
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
       drawer: NavigationDrawer(
-        activeRouteName: _activeRoutePath,
+        activeRouteName: _globalState.get(Page.ACTIVE_ROUTE_PATH),
         onSelected: (String selectedPath) {
-          _activeRoutePath = selectedPath;
+          _globalState.set(Page.ACTIVE_ROUTE_PATH, selectedPath);
         },
       ),
       body: widget.body,

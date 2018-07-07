@@ -16,12 +16,18 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
-  Widget _buildListTile(BuildContext ctx, {String title, String routeName, Icon icon}) {
-    return ListTileTheme(
+  Widget _buildListTile(BuildContext ctx,
+      {String title, String routeName, Icon icon}) {
+    final isActive = widget.activeRouteName == routeName;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: isActive ? Colors.black12 : Colors.white,
+      ),
       child: ListTile(
-        selected: widget.activeRouteName == routeName,
+        selected: isActive,
         leading: icon,
-        title: MajorText(title),
+        title: Text(title),
         onTap: () {
           widget.onSelected(routeName);
 
@@ -84,10 +90,18 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   Widget build(BuildContext ctx) {
     List<Widget> drawerChildren = [
       _buildDrawerHeader(ctx),
-      _buildListTile(ctx, title: '动态', routeName: '/', icon: const Icon(Icons.face)),
-      _buildListTile(ctx, title: '活动', routeName: '/activity', icon: const Icon(Icons.schedule)),
-      _buildListTile(ctx, title: '任务', routeName: '/task', icon: const Icon(Icons.event_note)),
-      _buildListTile(ctx, title: '菜式', routeName: '/recipe', icon: const Icon(Icons.restaurant_menu)),
+      _buildListTile(ctx,
+          title: '动态', routeName: '/', icon: const Icon(Icons.face)),
+      _buildListTile(ctx,
+          title: '活动',
+          routeName: '/activity',
+          icon: const Icon(Icons.schedule)),
+      _buildListTile(ctx,
+          title: '任务', routeName: '/task', icon: const Icon(Icons.event_note)),
+      _buildListTile(ctx,
+          title: '菜式',
+          routeName: '/recipe',
+          icon: const Icon(Icons.restaurant_menu)),
     ];
 
     return new Drawer(
