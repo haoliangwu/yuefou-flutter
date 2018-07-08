@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yuefou_flutter/src/common/text.dart';
+import 'package:yuefou_flutter/src/graphql/activities.dart';
 
 class NavigationDrawer extends StatefulWidget {
   NavigationDrawer({Key key, this.activeRouteName, this.onSelected})
@@ -29,6 +30,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         leading: icon,
         title: Text(title),
         onTap: () {
+          ActivitiesService.instance.list().then((res) {
+            print(res);
+          });
+
           widget.onSelected(routeName);
 
           Navigator.pushReplacementNamed(ctx, routeName);

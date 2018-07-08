@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yuefou_flutter/src/global_state.dart';
 import 'package:yuefou_flutter/src/home/navigation_drawer.dart';
 
-// 这个变量需要为持久化
-String _activeRoutePath = '/';
-
 class Page extends StatefulWidget {
   Page({Key key, this.title, this.body}) : super(key: key);
 

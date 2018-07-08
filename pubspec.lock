@@ -76,6 +76,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_stetho:
+    dependency: "direct dev"
+    description:
+      name: flutter_stetho
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -95,6 +102,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.5"
+  graphql_client:
+    dependency: "direct main"
+    description:
+      name: graphql_client
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.3"
   html:
     dependency: transitive
     description:
@@ -103,7 +117,7 @@ packages:
     source: hosted
     version: "0.13.3"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.flutter-io.cn"
@@ -145,7 +159,7 @@ packages:
     source: hosted
     version: "0.3.0-alpha.12"
   logging:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: logging
       url: "https://pub.flutter-io.cn"
