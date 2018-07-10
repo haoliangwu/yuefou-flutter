@@ -31,7 +31,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         title: Text(title),
         onTap: () {
           ActivitiesService.instance.list().then((res) {
-            print(res);
+            print(res.activities.collection[0].id.value);
           });
 
           widget.onSelected(routeName);

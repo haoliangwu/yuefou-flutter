@@ -29,17 +29,33 @@ class ActivitiesQuery extends Object with Fields implements GQLOperation {
       new ActivitiesQuery()..activities = activities.clone();
 }
 
-class ActivitiesResolver extends Object with Fields implements GQLField {
+class ActivitiesResolver extends Object
+    with Fields, Collection<ActivityResolver>
+    implements GQLField {
   IdResolver id = new IdResolver();
 
   @override
   String get name => 'activities';
 
-  // @override
   List<GQLField> get fields => [id];
 
   @override
   ActivitiesResolver clone() => new ActivitiesResolver()..id = id.clone();
+
+  @override
+  ActivityResolver get collectionResolver => new ActivityResolver();
+}
+
+class ActivityResolver extends Object with Fields implements GQLField {
+  IdResolver id = new IdResolver();
+
+  @override
+  String get name => 'activities';
+
+  List<GQLField> get fields => [id];
+
+  @override
+  ActivityResolver clone() => new ActivityResolver()..id = id.clone();
 }
 
 class IdResolver extends Object with Scalar<String> implements GQLField {
@@ -62,7 +78,7 @@ class ActivitiesService {
       'Authorization': 'Bearer ${GraphQL.apiToken}',
     };
 
-    return GraphQL.client.execute(
+    return GraphQL.client.execute<ActivitiesQuery, ActivityResolver>(
       query,
       variables: {},
       headers: headers,
