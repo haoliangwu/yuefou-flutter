@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuefou_flutter/src/dashboard/dashboard.dart';
 import 'package:yuefou_flutter/src/home/page.dart';
 
 class MyApp extends StatelessWidget {
@@ -10,7 +11,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: Page(title: '动态'),
+      home: Page(
+        title: '动态',
+        body: Dashboard(),
+      ),
       routes: <String, WidgetBuilder>{
         '/activity': (BuildContext context) => Page(title: '活动'),
         '/task': (BuildContext context) => Page(title: '任务'),

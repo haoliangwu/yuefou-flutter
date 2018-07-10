@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
-import 'package:graphql_client/graphql_client.dart';
 import 'package:logging/logging.dart';
+import 'package:yuefou_flutter/graphql_client/lib/graphql_client.dart';
 
 const endPoint = 'http://yuefou_dev.littlelyon.com/graphql';
 // final apiToken = Platform.environment['GITHUBQL_TOKEN'];
